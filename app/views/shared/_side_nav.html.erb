@@ -1,6 +1,9 @@
 <nav id='sidebarMenu' class="col-md-2 d-md-block bg-light sidebar collapse">
   <div class="sidebar-sticky pt-3">
-    <% if true %>
+    <% if Rails.env.development? %>
+      <%= switch_user_select %>
+    <% end %>
+    <% if current_user %>
       <ul class="nav flex-column">
       </ul>
     <% end %>
