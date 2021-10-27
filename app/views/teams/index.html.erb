@@ -1,0 +1,29 @@
+<% content_for :page_title, Team.model_name.human(count: 2) %>
+<% content_for :actions do %>
+  <%= link_to "New", new_team_path,
+    class: 'btn btn-sm btn-outline-primary' %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Team.human_attribute_name(:name) %></th>
+      <th><%= "Title" %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td>
+          <%= link_to "Show", team %>
+          |
+          <%= link_to "Edit", edit_team_path(team) %>
+          |
+          <%= link_to "Destroy", team, method: :delete, data: { confirm: I18n.t('views.actions.confirm_destroy') } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

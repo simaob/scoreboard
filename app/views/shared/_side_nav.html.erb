@@ -5,6 +5,13 @@
     <% end %>
     <% if current_user %>
       <ul class="nav flex-column">
+          <%= link_to teams_path, class: "nav-link #{'active' if controller_name == 'teams'}" do %>
+            <span data-feather="edit"></span>
+            <%= Team.model_name.human(count: 2) %>
+            <% if controller_name == 'teams' %>
+              <span class="sr-only">(current)</span>
+            <% end %>
+          <% end %>
       </ul>
     <% end %>
   </div>
