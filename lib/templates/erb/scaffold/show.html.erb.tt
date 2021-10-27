@@ -2,9 +2,9 @@
   <%% content_for :page_title, @<%= singular_table_name %>.name.titleize %>
 <% end %>
 <%% content_for :actions do %>
-  <%%= link_to(I18n.t('views.actions.edit'), edit_<%= singular_route_name %>_path(@<%= singular_table_name %>),
+  <%%= link_to("Edit", edit_<%= singular_route_name %>_path(@<%= singular_table_name %>),
     class: 'btn btn-sm btn-outline-primary')
-    .concat(link_to(I18n.t('views.actions.back'), <%= index_helper %>_path,
+    .concat(link_to("Back", <%= index_helper %>_path,
     class: 'btn btn-sm btn-outline-secondary')) %>
 <%% end %>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>

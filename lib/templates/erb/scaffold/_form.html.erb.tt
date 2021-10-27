@@ -1,7 +1,7 @@
 <%%= form_with(model: <%= model_resource_name %>, local: true) do |form| %>
   <%% if <%= singular_table_name %>.errors.any? %>
     <div id="error_explanation">
-      <h2><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> impediram <%= singular_table_name %> de ser guardado:</h2>
+      <h2><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prevented <%= singular_table_name %> from being saved:</h2>
 
       <ul>
         <%% <%= singular_table_name %>.errors.full_messages.each do |message| %>
@@ -32,6 +32,6 @@
 
 <% end -%>
   <div class="form-group">
-    <%%= form.submit I18n.t('views.form.submit'), class: "btn btn-primary" %>
+    <%%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <%% end %>
