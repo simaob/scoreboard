@@ -11,3 +11,16 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import 'bootstrap'
+import 'bootstrap-datepicker'
+import './src/application.scss'
+import 'controllers'
+
+const feather = require('feather-icons');
+
+$.fn.datepicker.defaults.format = "dd/mm/yyyy";
+
+document.addEventListener('turbolinks:load', function() {
+  feather.replace()
+});

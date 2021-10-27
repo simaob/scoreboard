@@ -1,0 +1,26 @@
+<nav class="navbar navbar-dark fixed-top bg-dark navbar-expand-md flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-12 col-md-2 mr-0 px-3" href="/">Scoreboard</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <ul class="navbar-nav px-3 col-sm-12 col-md-10 flex-column-reverse flex-md-row-reverse">
+    <li class="nav-item text-nowrap">
+      <% if true %>
+        <%= link_to "Logout", "#", method: :delete, class: 'nav-link' %>
+      <% else %>
+        <%= link_to "Login", "#", class: 'nav-link' %>
+      <% end%>
+    </li>
+    <% if true %>
+      <li class="nav-item dropdown <%= 'active' if ['users'].include?(controller_name) %>">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%#= true  current_user.name %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
+          <%= link_to "Profile page", "#", class: 'dropdown-item' %>
+          <%= link_to "Change password", "#", class: 'dropdown-item' %>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+</nav>
