@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   resources :teams
   devise_for :users
-  resources :users do
-    member do
-      patch :join_team
-    end
-  end
+  resources :users
   root "home#index"
 end

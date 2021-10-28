@@ -8,7 +8,8 @@
   <thead>
     <tr>
       <th><%= Team.human_attribute_name(:name) %></th>
-      <th><%= "Title" %></th>
+      <th>Members</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -16,19 +17,15 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.name %> <%= if current_user.team == team then content_tag("i", "(yours!)") end %></td>
+        <td><%= team.users.count %></td>
         <td>
-          <% if current_user.team != team %>
-            <%= form_with(model: current_user, url: join_team_user_path(current_user), local: true) do |builder| %>
-              <%= builder.hidden_field :team_id, value: team.id %>
-              <%= builder.submit "Join!" %>
-            <% end %>
-          |
-          <% end %>
           <%= link_to "Show", team %>
-          |
-          <%= link_to "Edit", edit_team_path(team) %>
-          |
-          <%= link_to "Destroy", team, method: :delete, data: { confirm: I18n.t('views.actions.confirm_destroy') } %>
+          <% if current_user.admin? %>
+            |
+            <%= link_to "Edit", edit_team_path(team) %>
+            |
+            <%= link_to "Destroy", team, method: :delete, data: { confirm: I18n.t('views.actions.confirm_destroy') } %>
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -1,14 +1,26 @@
+<% content_for :page_title, @team.name.titleize %>
 
-  <% content_for :page_title, @team.name.titleize %>
-
-<% content_for :actions do %>
-  <%= link_to("Edit", edit_team_path(@team),
-    class: 'btn btn-sm btn-outline-primary')
-    .concat(link_to("Back", teams_path,
-    class: 'btn btn-sm btn-outline-secondary')) %>
+<% if current_user.admin? %>
+  <% content_for :actions do %>
+    <%= link_to("Edit", edit_team_path(@team),
+      class: 'btn btn-sm btn-outline-primary')
+      .concat(link_to("Back", teams_path,
+      class: 'btn btn-sm btn-outline-secondary')) %>
+  <% end %>
+<% else %>
+  <% content_for :actions do %>
+    <%= link_to("Back", teams_path, class: 'btn btn-sm btn-outline-secondary') %>
+  <% end %>
 <% end %>
 <p>
   <strong><%= Team.human_attribute_name(:name) %>:</strong>
   <%= @team.name %>
+</p>
+<p><strong>Members:</strong>
+  <ul>
+    <% @team.users.order(:name).each do |user| %>
+      <li><%= link_to user.name, user %></li>
+    <% end %>
+  </ul>
 </p>
 

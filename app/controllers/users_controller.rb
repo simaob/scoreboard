@@ -71,21 +71,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def join_team
-    team = Team.find(params[:user][:team_id])
-    respond_to do |format|
-      if current_user.update(team_id: team.id)
-        format.html do
-          redirect_to teams_path, notice: "Team joined successfully"
-        end
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { redirect_to teams_path, error: "Failed to join team" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
