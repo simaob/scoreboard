@@ -10,6 +10,7 @@
       <th><%= Submission.human_attribute_name(:project_name) %></th>
       <th><%= Submission.human_attribute_name(:url) %></th>
       <th><%= Submission.human_attribute_name(:user_id) %></th>
+      <th>Votes</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -20,7 +21,13 @@
         <td><%= submission.project_name %></td>
         <td><%= submission.url %></td>
         <td><%= link_to submission.user.name, submission.user %></td>
+        <td><%= submission.votes_count %></td>
         <td>
+          <% if submission.user != current_user && current_user.votes.count < 6 %>
+            <%= form_with(model: [submission, Vote.new], local: true) do |form| %>
+              <%= form.submit "Vote!" %>
+            <% end %>
+          <% end %>
           <% if current_user.admin? %>
             <%= link_to "Show", submission %>
           <% end %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :submissions
+  resources :submissions do
+    resources :votes, only: [:create, :destroy]
+  end
   resources :teams
   devise_for :users
   resources :users

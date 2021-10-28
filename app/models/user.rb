@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :team, optional: true
   has_many :submissions
+  has_many :votes
 end

@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions or /submissions.json
   def index
-    @submissions = Submission.all
+    @submissions = Submission.most_loved
   end
 
   # GET /submissions/1 or /submissions/1.json
