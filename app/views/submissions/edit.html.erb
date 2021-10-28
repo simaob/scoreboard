@@ -1,0 +1,9 @@
+<% content_for :page_title, Submission.model_name.human %>
+<% content_for :actions do %>
+  <%= link_to("Show", @submission,
+    class: 'btn btn-sm btn-outline-secondary')
+    .concat(link_to("Back", submissions_path,
+    class: 'btn btn-sm btn-outline-secondary')) %>
+<% end %>
+
+<%= render 'form', submission: @submission %>

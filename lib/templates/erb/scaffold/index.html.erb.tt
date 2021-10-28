@@ -10,7 +10,7 @@
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
       <th><%%= <%= class_name %>.human_attribute_name(:<%= attribute.column_name %>) %></th>
 <% end -%>
-      <th><%%= "Title" %></th>
+      <th>Actions</th>
     </tr>
   </thead>
 

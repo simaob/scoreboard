@@ -6,6 +6,15 @@
     <% if current_user %>
       <ul class="nav flex-column">
         <li class="nav-item">
+          <%= link_to submissions_path, class: "nav-link #{'active' if controller_name == 'submissions'}" do %>
+            <span data-feather="edit"></span>
+            Submissions
+            <% if controller_name == 'submissions' %>
+              <span class="sr-only">(current)</span>
+            <% end %>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to users_path, class: "nav-link #{'active' if controller_name == 'users'}" do %>
             <span data-feather="edit"></span>
             Users

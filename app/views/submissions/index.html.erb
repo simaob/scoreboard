@@ -1,0 +1,34 @@
+<% content_for :page_title, Submission.model_name.human(count: 2) %>
+<% content_for :actions do %>
+  <%= link_to "New", new_submission_path,
+    class: 'btn btn-sm btn-outline-primary' %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Submission.human_attribute_name(:project_name) %></th>
+      <th><%= Submission.human_attribute_name(:url) %></th>
+      <th><%= Submission.human_attribute_name(:user_id) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @submissions.each do |submission| %>
+      <tr>
+        <td><%= submission.project_name %></td>
+        <td><%= submission.url %></td>
+        <td><%= link_to submission.user.name, submission.user %></td>
+        <td>
+          <% if current_user.admin? %>
+            <%= link_to "Show", submission %>
+          <% end %>
+          <% if submission.user == current_user %>
+            <%= link_to "Destroy", submission, method: :delete, data: { confirm: I18n.t('views.actions.confirm_destroy') } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

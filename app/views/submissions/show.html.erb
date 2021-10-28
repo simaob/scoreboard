@@ -1,0 +1,22 @@
+
+<% content_for :actions do %>
+  <%= link_to("Edit", edit_submission_path(@submission),
+    class: 'btn btn-sm btn-outline-primary')
+    .concat(link_to("Back", submissions_path,
+    class: 'btn btn-sm btn-outline-secondary')) %>
+<% end %>
+<p>
+  <strong><%= Submission.human_attribute_name(:project_name) %>:</strong>
+  <%= @submission.project_name %>
+</p>
+
+<p>
+  <strong><%= Submission.human_attribute_name(:url) %>:</strong>
+  <%= link_to @submission.url, @submission.url, target: '_blank' %>
+</p>
+
+<p>
+  <strong><%= Submission.human_attribute_name(:user_id) %>:</strong>
+  <%= link_to @submission.user.name, @submission.user %>
+</p>
+
