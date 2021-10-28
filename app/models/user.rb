@@ -6,4 +6,12 @@ class User < ApplicationRecord
   belongs_to :team, optional: true
   has_many :submissions
   has_many :votes
+
+  def can_vote_for? submission
+    submission.user != self && votes.count < 6 && votes.where(submission_id: submission.id).none?
+  end
+
+  def voted_for? submission
+    votes.where(submission_id: submission.id).any?
+  end
 end

@@ -13,4 +13,13 @@ class VotesController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @vote = Vote.find(params[:id])
+    raise CanCan::AccessDenied if @vote.user != current_user
+    @vote.destroy
+    respond_to do |format|
+      format.html { redirect_to submissions_url, notice: "Vote deleted sucessfully!" }
+    end
+  end
 end

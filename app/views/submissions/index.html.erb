@@ -23,9 +23,14 @@
         <td><%= link_to submission.user.name, submission.user %></td>
         <td><%= submission.votes_count %></td>
         <td>
-          <% if submission.user != current_user && current_user.votes.count < 6 %>
+          <% if current_user.can_vote_for?(submission) %>
             <%= form_with(model: [submission, Vote.new], local: true) do |form| %>
               <%= form.submit "Vote!" %>
+            <% end %>
+          <% elsif current_user.voted_for?(submission) %>
+            You voted!
+            <%= form_with(model: [submission, current_user.votes.where(submission_id: submission.id).first], local: true, method: :delete) do |form| %>
+              <%= form.submit "Delete vote!" %>
             <% end %>
           <% end %>
           <% if current_user.admin? %>
