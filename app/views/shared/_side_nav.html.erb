@@ -5,13 +5,24 @@
     <% end %>
     <% if current_user %>
       <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to users_path, class: "nav-link #{'active' if controller_name == 'users'}" do %>
+            <span data-feather="edit"></span>
+            Users
+            <% if controller_name == 'users' %>
+              <span class="sr-only">(current)</span>
+            <% end %>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to teams_path, class: "nav-link #{'active' if controller_name == 'teams'}" do %>
             <span data-feather="edit"></span>
-            <%= Team.model_name.human(count: 2) %>
+            Teams
             <% if controller_name == 'teams' %>
               <span class="sr-only">(current)</span>
             <% end %>
           <% end %>
+        </li>
       </ul>
     <% end %>
   </div>

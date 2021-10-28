@@ -17,5 +17,10 @@
       <strong><%= User.human_attribute_name(:email) %>:</strong>
       <%= @user.email %>
     </p>
+
+    <p>
+      <strong>Team:</strong>
+      <%= display_team(@user.team) %>
+    </p>
   </div>
 </div>

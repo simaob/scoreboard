@@ -1,4 +1,4 @@
-<% content_for :page_title, Team.model_name.human(count: 2) %>
+<% content_for :page_title, "Teams" %>
 <% content_for :actions do %>
   <%= link_to "New", new_team_path,
     class: 'btn btn-sm btn-outline-primary' %>
@@ -15,8 +15,15 @@
   <tbody>
     <% @teams.each do |team| %>
       <tr>
-        <td><%= team.name %></td>
+        <td><%= team.name %> <%= if current_user.team == team then content_tag("i", "(yours!)") end %></td>
         <td>
+          <% if current_user.team != team %>
+            <%= form_with(model: current_user, url: join_team_user_path(current_user), local: true) do |builder| %>
+              <%= builder.hidden_field :team_id, value: team.id %>
+              <%= builder.submit "Join!" %>
+            <% end %>
+          |
+          <% end %>
           <%= link_to "Show", team %>
           |
           <%= link_to "Edit", edit_team_path(team) %>
