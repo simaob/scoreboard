@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    return unless current_user == @user
+    return unless current_user.admin? || current_user == @user
   end
 
   # GET /users/new
@@ -19,7 +19,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    @teams = Team.order(:name)
+  end
 
   # POST /users
   # POST /users.json
@@ -30,8 +32,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html do
-          redirect_to @user, notice: "User created successfully",
-                                       resource: User.model_name.human(count: 1)
+          redirect_to @user, notice: "User created successfully"
         end
         format.json { render :show, status: :created, location: @user }
       else
@@ -47,8 +48,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html do
-          redirect_to @user, notice: "User updated successfully",
-                                       resource: User.model_name.human(count: 1)
+          redirect_to @user, notice: "User updated successfully"
         end
         format.json { render :show, status: :ok, location: @user }
       else
@@ -64,8 +64,7 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       format.html do
-        redirect_to users_url, notice: t('controllers.msgs.destroy_success',
-                                         resource: User.model_name.human(count: 1))
+        redirect_to users_url, notice: 'User deleted successfully'
       end
       format.json { head :no_content }
     end
@@ -81,6 +80,7 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     allowed_attrs = [:name, :email]
+    allowed_attrs << :team_id if current_user.admin?
 
     params.require(:user).permit(allowed_attrs)
   end
