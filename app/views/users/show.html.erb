@@ -23,4 +23,16 @@
       <%= display_team(@user.team) %>
     </p>
   </div>
+  <% if current_user == @user %>
+    <h2>Here are your votes!</h2>
+    <ul>
+      <% @user.votes.each do |vote| %>
+        <li>
+          <%= link_to vote.submission.project_name, vote.submission.url, target: "_blank" %>
+          by <%= link_to vote.submission.user&.name, vote.submission.user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
+

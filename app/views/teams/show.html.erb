@@ -16,6 +16,12 @@
   <strong><%= Team.human_attribute_name(:name) %>:</strong>
   <%= @team.name %>
 </p>
+<p>
+  <strong>Number of submissions:</strong> <%= Submission.where(user_id: @team.users.pluck(:id)).count %>
+</p>
+<p>
+  <strong>Number of votes cast:</strong> <%= Vote.where(user_id: @team.users.pluck(:id)).count %>
+</p>
 <p><strong>Members:</strong>
   <ul>
     <% @team.users.order(:name).each do |user| %>
