@@ -8,7 +8,10 @@
   <thead>
     <tr>
       <th><%= Team.human_attribute_name(:name) %></th>
-      <th>Members</th>
+      <th># Members</th>
+      <th># Submissions</th>
+      <th># Votes received</th>
+      <th># Votes cast</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -18,6 +21,9 @@
       <tr>
         <td><%= team.name %> <%= if current_user.team == team then content_tag("i", "(yours!)") end %></td>
         <td><%= team.users.count %></td>
+        <td><%= team.submissions_count %></td>
+        <td><%= team.votes_received_count %></td>
+        <td><%= team.votes_cast_count %></td>
         <td>
           <%= link_to "Show", team %>
           <% if current_user.admin? %>

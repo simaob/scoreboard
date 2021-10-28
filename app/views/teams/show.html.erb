@@ -29,4 +29,14 @@
     <% end %>
   </ul>
 </p>
+<p><strong>Submissions:</strong>
+  <ul>
+    <% @team.submissions.order(:votes_count).each do |submission| %>
+      <li>
+        <%= link_to submission.project_name, submission.url, target: "_blank" %>
+        by <%= link_to submission.user&.name, submission.user %>
+      </li>
+    <% end %>
+  </ul>
+</p>
 
