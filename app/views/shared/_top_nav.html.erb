@@ -21,14 +21,16 @@
           <%= link_to "Change password", edit_user_registration_path, class: 'dropdown-item' %>
         </div>
       </li>
-      <li class="nav-item text-nowrap">
-        <% votes_left = MAXIMUM_VOTES_PER_USER - current_user.votes.count %>
-        <span class="nav-link">You have <%= pluralize(votes_left, "vote") %> left.
-          <% if votes_left > 0 %>
-            <%= link_to "Go vote!", submissions_path %>
-          <% end %>
-        </span>
-      </li>
+      <% if current_user.team %>
+        <li class="nav-item text-nowrap">
+          <% votes_left = MAXIMUM_VOTES_PER_TEAM - current_user.votes.count %>
+          <span class="nav-link">Your team has <%= pluralize(votes_left, "vote") %> left.
+            <% if votes_left > 0 %>
+              <%= link_to "Go vote!", submissions_path %>
+            <% end %>
+          </span>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </nav>

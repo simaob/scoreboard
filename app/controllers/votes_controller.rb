@@ -3,7 +3,7 @@ class VotesController < ApplicationController
     @submission = Submission.find(params[:submission_id])
     raise CanCan::AccessDenied unless current_user.can_vote_for?(@submission)
 
-    @vote = Vote.new(submission_id: @submission.id, user_id: current_user.id)
+    @vote = Vote.new(submission_id: @submission.id, team_id: current_user.team.id)
 
     respond_to do |format|
       if @vote.save

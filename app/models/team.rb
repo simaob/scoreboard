@@ -1,7 +1,7 @@
 class Team < ApplicationRecord
   has_many :users, dependent: :nullify
   has_many :submissions, through: :users
-  has_many :votes, through: :users
+  has_many :votes
   has_many :votes_received, through: :submissions, source: :votes
 
   def submissions_count

@@ -5,14 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :team, optional: true
   has_many :submissions
-  has_many :votes
+  has_many :votes, through: :team
 
   def can_vote_for? submission
     # not their submission or submission from their team
     # still has votes
     # hasn't voted for it yet
-    submission.user != self && submission.user.team != self.team &&
-      votes.count < MAXIMUM_VOTES_PER_USER && votes.where(submission_id: submission.id).none?
+    self.team && submission.user != self && submission.user.team != self.team &&
+      votes.count < MAXIMUM_VOTES_PER_TEAM && votes.where(submission_id: submission.id).none?
   end
 
   def voted_for? submission

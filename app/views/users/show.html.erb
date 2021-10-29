@@ -47,8 +47,8 @@
           </li>
         <% end %>
       </ul>
-    <% else %>
-      You still have <%= MAXIMUM_VOTES_PER_USER %> votes left!
+    <% elsif current_user.team %>
+      Your team still has <%= MAXIMUM_VOTES_PER_TEAM %> votes left!
       You must use all your votes to be elegible to win the competition.
     <% end %>
   <% end %>
