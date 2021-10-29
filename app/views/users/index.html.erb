@@ -12,6 +12,7 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Github</th>
       <th>Team</th>
       <th>Actions</th>
     </tr>
@@ -22,6 +23,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= mail_to user.email %></td>
+        <td><%= user.github && link_to(user.github, user.github_link, target: "_blank") %></td>
         <td>
           <%= display_team(user.team) %>
         </td>

@@ -15,7 +15,12 @@
 
     <p>
       <strong><%= User.human_attribute_name(:email) %>:</strong>
-      <%= @user.email %>
+      <%= mail_to @user.email %>
+    </p>
+
+    <p>
+      <strong><%= User.human_attribute_name(:github) %>:</strong>
+      <%= @user.github.present? ? link_to(@user.github, @user.github_link, target: "_blank") : "-" %>
     </p>
 
     <p>
@@ -24,7 +29,7 @@
     </p>
   </div>
   <% if current_user == @user %>
-    <h2>Here are your votes!</h2>
+    <h4>Here are your votes!</h4>
     <ul>
       <% @user.votes.each do |vote| %>
         <li>

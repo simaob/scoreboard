@@ -79,7 +79,7 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    allowed_attrs = [:name, :email]
+    allowed_attrs = [:name, :email, :github]
     allowed_attrs << :team_id if current_user.admin?
 
     params.require(:user).permit(allowed_attrs)
