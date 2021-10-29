@@ -1,11 +1,19 @@
 <% content_for :page_title, @user.name&.titleize %>
 
-<% content_for :actions do %>
-  <%= link_to(t('views.actions.edit'), edit_user_path(@user),
-    class: 'btn btn-sm btn-outline-primary')
-    .concat(link_to(t('views.actions.back'), users_path(page: params[:page]),
-    class: 'btn btn-sm btn-outline-secondary')) %>
+<% if current_user.admin? || @user == current_user %>
+  <% content_for :actions do %>
+    <%= link_to(t('views.actions.edit'), edit_user_path(@user),
+      class: 'btn btn-sm btn-outline-primary')
+      .concat(link_to(t('views.actions.back'), users_path(page: params[:page]),
+                      class: 'btn btn-sm btn-outline-secondary')) %>
+  <% end %>
+<% else %>
+  <% content_for :actions do %>
+    <%= link_to(t('views.actions.back'), users_path(page: params[:page]),
+                      class: 'btn btn-sm btn-outline-secondary') %>
+  <% end %>
 <% end %>
+
 <div class="main-card mb-3 card">
   <div class="card-body">
     <p>

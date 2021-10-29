@@ -20,7 +20,7 @@
       <tr>
         <td><%= submission.project_name %></td>
         <td><%= link_to submission.url, submission.url, target: "_blank" %></td>
-        <td><%= submission.team ? link_to(submission.team.name, submission.team) : link_to(submission.user.name, submission.user) %></td>
+        <td><%= submission.team ? link_to(submission.team.name, submission.team) : link_to(submission.user.name.presence || submission.user.email, submission.user) %></td>
         <td><%= submission.votes_count %></td>
         <td>
           <% if current_user.can_vote_for?(submission) %>
