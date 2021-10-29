@@ -1,9 +1,12 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <% if controller_name == "teams" && action_name == "index" %>
+      <meta http-equiv="refresh" content="60">
+    <% end %>
     <title>Switch_ Presents Hacktoberfest</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
