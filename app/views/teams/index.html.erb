@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @teams.each do |team| %>
+    <% @teams.sort{|a,b| b.votes_received_count <=> a.votes_received_count}.each do |team| %>
       <tr>
         <td><%= team.name %> <%= if current_user.team == team then content_tag("i", "(yours!)") end %></td>
         <td><%= team.users.count %></td>
