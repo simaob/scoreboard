@@ -18,7 +18,7 @@ import './src/application.scss'
 
 const feather = require('feather-icons');
 
-$.fn.datepicker.defaults.format = "dd/mm/yyyy";
+jQuery.fn.datepicker.defaults.format = "dd/mm/yyyy";
 
 document.addEventListener('turbolinks:load', function() {
   feather.replace()
