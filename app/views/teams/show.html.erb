@@ -35,7 +35,7 @@
       <li>
         <%= link_to submission.project_name, submission.url, target: "_blank" %>
         by <%= link_to submission.user&.name, submission.user %>,
-        <%= link_to "To vote go here!", submissions_path %>
+        Wanna vote on this? <%= link_to "Go here!", submissions_path %>
       </li>
     <% end %>
   </ul>
