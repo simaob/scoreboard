@@ -25,7 +25,7 @@
 <p><strong>Members:</strong>
   <ul>
     <% @team.users.order(:name).each do |user| %>
-      <li><%= link_to user.name, user %></li>
+      <li><%= link_to user.display_name, user %></li>
     <% end %>
   </ul>
 </p>
@@ -34,7 +34,7 @@
     <% @team.submissions.order(:votes_count).each do |submission| %>
       <li>
         <%= link_to submission.project_name, submission.url, target: "_blank" %>
-        by <%= link_to submission.user&.name, submission.user %>,
+        by <%= link_to submission.user.display_name, submission.user %>,
         Wanna vote on this? <%= link_to "Go here!", submissions_path %>
       </li>
     <% end %>

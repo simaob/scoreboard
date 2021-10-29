@@ -22,5 +22,5 @@
 
 <p>
   <strong><%= Submission.human_attribute_name(:user_id) %>:</strong>
-  <%= link_to @submission.user.name, @submission.user %>
+  <%= link_to @submission.user.display_name, @submission.user %>
 </p>

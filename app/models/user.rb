@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def github_link
     github && "https://github.com/#{github}"
   end
+
+  def display_name
+    name.presence || email
+  end
 end
