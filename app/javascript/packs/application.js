@@ -15,7 +15,6 @@ ActiveStorage.start()
 import 'bootstrap'
 import 'bootstrap-datepicker'
 import './src/application.scss'
-import 'controllers'
 
 const feather = require('feather-icons');
 
