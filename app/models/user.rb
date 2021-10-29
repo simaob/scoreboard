@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :votes
 
   def can_vote_for? submission
+    # not their submission or submission from their team
+    # still has votes
+    # hasn't voted for it yet
     submission.user != self && submission.user.team != self.team &&
       votes.count < MAXIMUM_VOTES_PER_USER && votes.where(submission_id: submission.id).none?
   end
