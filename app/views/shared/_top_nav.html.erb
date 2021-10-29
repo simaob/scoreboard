@@ -6,8 +6,7 @@
   <ul class="navbar-nav px-3 col-sm-12 col-md-10 flex-column-reverse flex-md-row-reverse">
     <li class="nav-item text-nowrap">
       <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path,
-          method: :delete, class: 'nav-link' %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %>
       <% else %>
         <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
       <% end%>
