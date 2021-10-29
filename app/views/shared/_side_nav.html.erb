@@ -6,8 +6,17 @@
     <% if current_user %>
       <ul class="nav flex-column">
         <li class="nav-item">
+          <%= link_to teams_path, class: "nav-link #{'active' if controller_name == 'teams'}" do %>
+            <span data-feather="clipboard"></span>
+            Teams and Leaderboard
+            <% if controller_name == 'teams' %>
+              <span class="sr-only">(current)</span>
+            <% end %>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to submissions_path, class: "nav-link #{'active' if controller_name == 'submissions'}" do %>
-            <span data-feather="edit"></span>
+            <span data-feather="git-pull-request"></span>
             Submissions
             <% if controller_name == 'submissions' %>
               <span class="sr-only">(current)</span>
@@ -16,18 +25,9 @@
         </li>
         <li class="nav-item">
           <%= link_to users_path, class: "nav-link #{'active' if controller_name == 'users'}" do %>
-            <span data-feather="edit"></span>
+            <span data-feather="users"></span>
             Users
             <% if controller_name == 'users' %>
-              <span class="sr-only">(current)</span>
-            <% end %>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to teams_path, class: "nav-link #{'active' if controller_name == 'teams'}" do %>
-            <span data-feather="edit"></span>
-            Teams
-            <% if controller_name == 'teams' %>
               <span class="sr-only">(current)</span>
             <% end %>
           <% end %>

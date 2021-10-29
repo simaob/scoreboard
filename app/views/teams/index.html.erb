@@ -25,7 +25,12 @@
       <tr>
         <td><%= i %></td>
         <% i += 1 %>
-        <td><%= team.name %> <%= if current_user.team == team then content_tag("i", "(yours!)") end %></td>
+        <td>
+          <%= team.name %>
+          <% if current_user.team == team %>
+            <span data-feather="user-check" alt="Yours!" title="Yours!"></span>
+          <% end %>
+        </td>
         <td><%= team.users.count %></td>
         <td><%= team.submissions_count %></td>
         <td><%= team.votes_received_count %></td>
