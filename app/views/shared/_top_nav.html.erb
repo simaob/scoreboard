@@ -20,7 +20,15 @@
           <%= link_to "Profile", current_user, class: 'dropdown-item' %>
           <%= link_to "Change password", edit_user_registration_path, class: 'dropdown-item' %>
         </div>
-      </div>
+      </li>
+      <li class="nav-item text-nowrap">
+        <% votes_left = MAXIMUM_VOTES_PER_USER - current_user.votes.count %>
+        <span class="nav-link">You have <%= pluralize(votes_left, "vote") %> left.
+          <% if votes_left > 0 %>
+            <%= link_to "Go vote!", submissions_path %>
+          <% end %>
+        </span>
+      </li>
     <% end %>
   </ul>
 </nav>
