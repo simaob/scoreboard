@@ -28,16 +28,21 @@
       <%= display_team(@user.team) %>
     </p>
   </div>
-  <% if current_user == @user %>
-    <h4>Here are your votes!</h4>
-    <ul>
-      <% @user.votes.each do |vote| %>
-        <li>
-          <%= link_to vote.submission.project_name, vote.submission.url, target: "_blank" %>
-          by <%= link_to vote.submission.user&.name, vote.submission.user %>
-        </li>
-      <% end %>
-    </ul>
+  <% if current_user == @user || current_user.admin? %>
+    <% if @user.votes.any? %>
+      <h5>Here are your votes!</h5>
+      <ul>
+        <% @user.votes.each do |vote| %>
+          <li>
+            <%= link_to vote.submission.project_name, vote.submission.url, target: "_blank" %>
+            by <%= link_to vote.submission.user&.name, vote.submission.user %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      You still have <%= MAXIMUM_VOTES_PER_USER %> votes left!
+      You must use all your votes to be elegible to win the competition.
+    <% end %>
   <% end %>
 </div>
 

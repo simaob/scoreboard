@@ -1,4 +1,4 @@
-<% content_for :page_title, "Teams" %>
+<% content_for :page_title, "Teams and Leaderboard" %>
 <% if current_user.admin? %>
   <% content_for :actions do %>
     <%= link_to "New", new_team_path,
@@ -9,6 +9,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th width="5px">#</th>
       <th><%= Team.human_attribute_name(:name) %></th>
       <th># Members</th>
       <th># Submissions</th>
@@ -19,8 +20,11 @@
   </thead>
 
   <tbody>
+    <% i = 1 %>
     <% @teams.sort{|a,b| b.votes_received_count <=> a.votes_received_count}.each do |team| %>
       <tr>
+        <td><%= i %></td>
+        <% i += 1 %>
         <td><%= team.name %> <%= if current_user.team == team then content_tag("i", "(yours!)") end %></td>
         <td><%= team.users.count %></td>
         <td><%= team.submissions_count %></td>
