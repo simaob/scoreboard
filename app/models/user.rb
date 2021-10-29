@@ -26,4 +26,9 @@ class User < ApplicationRecord
   def display_name
     name.presence || email
   end
+
+  def gravatar_url(size = 50)
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "https://secure.gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+  end
 end

@@ -10,6 +10,7 @@
 <table class="table table-lg table-hover table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>Email</th>
       <th>Github</th>
@@ -21,6 +22,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= image_tag(user.gravatar_url(35), width: 35, alt: user.display_name, class: 'rounded-circle') %></td>
         <td><%= user.name %></td>
         <td><%= mail_to user.email %></td>
         <td><%= user.github && link_to(user.github, user.github_link, target: "_blank") %></td>
