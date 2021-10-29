@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name).page(params[:page])
+    @users = User.order(:name, :email).page(params[:page])
   end
 
   # GET /users/1
