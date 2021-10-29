@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   def create
     @submission = Submission.find(params[:submission_id])
-    raise CanCan::AccessDenied if @submission.user == current_user
+    raise CanCan::AccessDenied if current_user.can_vote_for?(@submission)
 
     @vote = Vote.new(submission_id: @submission.id, user_id: current_user.id)
 
