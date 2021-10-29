@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: %i[ show edit update destroy ]
+  authorize_resource
 
   # GET /submissions or /submissions.json
   def index
