@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :votes
 
   def can_vote_for? submission
-    submission.user != self && votes.count < MAXIMUM_VOTES_PER_USER && votes.where(submission_id: submission.id).none?
+    submission.user != self && submission.user.team != self.team &&
+      votes.count < MAXIMUM_VOTES_PER_USER && votes.where(submission_id: submission.id).none?
   end
 
   def voted_for? submission
