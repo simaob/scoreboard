@@ -1,8 +1,14 @@
-<% content_for :actions do %>
-  <%= link_to("Edit", edit_submission_path(@submission),
-    class: 'btn btn-sm btn-outline-primary')
-    .concat(link_to("Back", submissions_path,
-    class: 'btn btn-sm btn-outline-secondary')) %>
+<% if current_user.admin? %>
+  <% content_for :actions do %>
+    <%= link_to("Edit", edit_submission_path(@submission),
+      class: 'btn btn-sm btn-outline-primary')
+      .concat(link_to("Back", submissions_path,
+      class: 'btn btn-sm btn-outline-secondary')) %>
+  <% end %>
+<% else %>
+  <% content_for :actions do %>
+    <%= link_to("Back", submissions_path, class: 'btn btn-sm btn-outline-secondary') %>
+  <% end %>
 <% end %>
 <p>
   <strong><%= Submission.human_attribute_name(:project_name) %>:</strong>

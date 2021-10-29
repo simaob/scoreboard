@@ -10,6 +10,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      can :manage, Submission
       can [:edit, :update], User do |usr|
         usr.id == user.id
       end
