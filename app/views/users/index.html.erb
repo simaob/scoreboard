@@ -24,9 +24,16 @@
       <tr>
         <td><%= image_tag(user.gravatar_url(30), width: 30, alt: user.display_name, class: 'rounded-circle') %></td>
         <td>
-          <%= user.name %>
+          <%= user.name.presence || content_tag("i", "Name missing") %>
           <% if user.admin? %>
-            <span data-feather="tool" alt="Admin" title="Admin"></span>
+            <span title="Admin">
+              <span data-feather="tool" alt="Admin" title="Admin" class="text-primary"></span>
+            </span>
+          <% end %>
+          <% if current_user != user && current_user.team && user.team == current_user.team %>
+            <span title="Team mate!">
+              <span data-feather="smile" alt="Team mate" title="Team mate" class="text-success"></span>
+            </span>
           <% end %>
         </td>
         <td><%= mail_to user.email %></td>
