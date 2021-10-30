@@ -1,29 +1,27 @@
-<%= turbo_frame_tag submission do %>
-  <%= form_with(model: submission, local: true) do |form| %>
-    <% if submission.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(submission.errors.count, "error") %> prevented submission from being saved:</h2>
+<%= form_with(model: submission, local: true) do |form| %>
+  <% if submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(submission.errors.count, "error") %> prevented submission from being saved:</h2>
 
-        <ul>
-          <% submission.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= form.label :project_name, class: "col-sm-2 col-form-label" %>
-      <%= form.text_field :project_name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :url, class: "col-sm-2 col-form-label" %>
-      <%= form.text_field :url, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.submit "Submit", class: "btn btn-primary" %>
+      <ul>
+        <% submission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= form.label :project_name, class: "col-sm-2 col-form-label" %>
+    <%= form.text_field :project_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :url, class: "col-sm-2 col-form-label" %>
+    <%= form.text_field :url, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
 <% end %>

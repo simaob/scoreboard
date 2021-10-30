@@ -1,24 +1,22 @@
-<%= turbo_frame_tag team do %>
-  <%= form_with(model: team) do |form| %>
-    <% if team.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(team.errors.count, "error") %> prevented team from being saved:</h2>
+<%= form_with(model: team) do |form| %>
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prevented team from being saved:</h2>
 
-        <ul>
-          <% team.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="form-group">
-      <%= form.label :name, class: "col-sm-2 col-form-label" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.submit "Submit", class: "btn btn-primary" %>
+      <ul>
+        <% team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: "col-sm-2 col-form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
 <% end %>
