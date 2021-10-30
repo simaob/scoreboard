@@ -4,7 +4,6 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions or /submissions.json
   def index
-    set_github_client
     @submissions = Submission.most_loved
   end
 

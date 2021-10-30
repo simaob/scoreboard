@@ -9,7 +9,6 @@ class TeamsController < ApplicationController
       @teams = Team.all
       render "teams/index"
     else
-      set_github_client
       @submissions = Submission.most_loved
       render "submissions/index"
     end

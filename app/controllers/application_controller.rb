@@ -8,10 +8,4 @@ class ApplicationController < ActionController::Base
       format.js   { head :forbidden, content_type: 'text/html' }
     end
   end
-
-  private
-
-  def set_github_client
-    @github = Octokit::Client.new(:access_token => ENV['GITHUB_PERSONAL_TOKEN'])
-  end
 end
