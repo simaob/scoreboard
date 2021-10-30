@@ -39,6 +39,9 @@
           <% end %>
         </td>
         <td>
+          <% unless current_user.team %>
+            Join a team so you can vote
+          <% end %>
           <% if current_user.can_vote_for?(submission) %>
             <%= form_with(model: [submission, Vote.new], local: true) do |form| %>
               <%= button_tag class: "btn text-success d-inline", title: "Vote!" do %>
