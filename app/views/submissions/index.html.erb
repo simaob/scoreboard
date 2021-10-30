@@ -66,16 +66,18 @@
           <% unless current_user.team %>
             Join a team so you can vote
           <% end %>
-          <% if current_user.can_vote_for?(submission) %>
-            <%= form_with(model: [submission, Vote.new], local: true) do |form| %>
-              <%= button_tag class: "btn text-success d-inline", title: "Vote!" do %>
-                <span data-feather="star"></span>
+          <% if current_user.admin? %>
+            <% if current_user.can_vote_for?(submission) %>
+              <%= form_with(model: [submission, Vote.new], local: true) do |form| %>
+                <%= button_tag class: "btn text-success d-inline", title: "Vote!" do %>
+                  <span data-feather="star"></span>
+                <% end %>
               <% end %>
-            <% end %>
-          <% elsif current_user.voted_for?(submission) %>
-            <%= form_with(model: [submission, current_user.votes.where(submission_id: submission.id).first], local: true, method: :delete) do |form| %>
-              <%= button_tag class: "btn text-danger", title: "Delete vote" do %>
-                <span data-feather="trash"></span>
+            <% elsif current_user.voted_for?(submission) %>
+              <%= form_with(model: [submission, current_user.votes.where(submission_id: submission.id).first], local: true, method: :delete) do |form| %>
+                <%= button_tag class: "btn text-danger", title: "Delete vote" do %>
+                  <span data-feather="trash"></span>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
