@@ -1,12 +1,14 @@
 module SubmissionsHelper
   def pr_status state
-    color = if state == "open"
-              "info"
+    color, icon = if state == "open"
+              ["info", "clock"]
             elsif state == "merged"
-              "success"
+              ["success", "git-merge"]
             else
-              "danger"
+              ["danger", "x-circle"]
             end
-    content_tag("span", state, class: "text-#{color}")
+    content_tag(:span, title: state, class: "text-#{color}") do
+      content_tag(:span, nil, data: { feather: icon })
+    end
   end
 end
