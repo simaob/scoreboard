@@ -61,3 +61,5 @@ gem 'cancancan'
 gem 'devise'
 gem 'kaminari'
 gem "rqrcode", "~> 2.0"
+gem "octokit", "~> 4.0"
+gem 'dotenv-rails', groups: [:development, :test]

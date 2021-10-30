@@ -7,6 +7,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>State</th>
       <th><%= Submission.human_attribute_name(:project_name) %></th>
       <th><%= Submission.human_attribute_name(:url) %></th>
       <th>QR Code</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @submissions.each do |submission| %>
       <tr>
+        <td><%= pr_status(submission.pr_state) %></td>
         <td>
           <%= submission.project_name[0, 250] %>
           <% if current_user.voted_for?(submission) %>
