@@ -20,6 +20,5 @@ const feather = require('feather-icons');
 jQuery.fn.datepicker.defaults.format = "dd/mm/yyyy";
 
 document.addEventListener('turbo:load', function() {
-  console.log("Turbo mode!")
   feather.replace()
 });
