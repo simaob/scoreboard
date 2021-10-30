@@ -29,6 +29,11 @@
               <span data-feather="star" class="text-primary" title="You voted for this"></span>
             </span>
           <% end %>
+          <% if submission.team == current_user.team %>
+            <span title="From your team">
+              <span data-feather="shield" class="text-success" title="From your team"></span>
+            </span>
+          <% end %>
         </td>
         <td><%= link_to submission.url, submission.url, target: "_blank" %></td>
         <td>
