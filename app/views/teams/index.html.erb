@@ -28,7 +28,9 @@
         <td>
           <%= team.name %>
           <% if current_user.team == team %>
-            <span data-feather="user-check" alt="Yours!" title="Yours!"></span>
+            <span title="Your team!">
+              <span data-feather="user-check" alt="Yours!" title="Yours!"></span>
+            </span>
           <% end %>
         </td>
         <td><%= team.users.count %></td>
