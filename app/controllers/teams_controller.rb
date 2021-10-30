@@ -4,14 +4,7 @@ class TeamsController < ApplicationController
 
   # GET /teams or /teams.json
   def index
-    @selection = [:teams, :submissions].shuffle.first
-    if @selection == :teams
-      @teams = Team.all
-      render "teams/index"
-    else
-      @submissions = Submission.most_loved
-      render "submissions/index"
-    end
+    @teams = Team.all
   end
 
   # GET /teams/1 or /teams/1.json

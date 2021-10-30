@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :teams
   devise_for :users
   resources :users
+  get "/dashboard", to: "home#dashboard"
   root "home#index"
 end
