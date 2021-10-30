@@ -4,7 +4,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions or /submissions.json
   def index
-    @submissions = Submission.most_loved
+    @submissions = Submission.most_loved.page(params[:page]).per(1000)
   end
 
   # GET /submissions/1 or /submissions/1.json

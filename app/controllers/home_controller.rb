@@ -7,7 +7,7 @@ class HomeController < ApplicationController
       @teams = Team.all
       render "teams/index"
     else
-      @submissions = Submission.most_loved
+      @submissions = Submission.most_loved.page(params[:page]).per(1000)
       render "submissions/index"
     end
   end
