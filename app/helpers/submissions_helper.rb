@@ -3,7 +3,7 @@ module SubmissionsHelper
     color, icon = if state == "open"
               ["info", "clock"]
             elsif state == "merged"
-              ["success", "git-merge"]
+              ["success", "check"]
             else
               ["danger", "x-circle"]
             end

@@ -15,7 +15,7 @@ class Submission < ApplicationRecord
     pull_number = parts.last
     pr = github.pull_request(org_repo, pull_number)
 
-    return :merged if pr.merged?
+    return "merged" if pr.merged?
 
     pr.state
   end
