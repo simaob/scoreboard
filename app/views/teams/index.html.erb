@@ -50,12 +50,3 @@
     <% end %>
   </tbody>
 </table>
-
-<% if Rails.env.production? %>
-  <div class="alert alert-light" role="alert">
-    <p class="h5 text-center">
-      Find me on <%= link_to "https://switch-presents-hacktoberfest.herokuapp.com" %><br />
-      <img width="160px" src="/qr_code.png" title="QR Code" alt="QR Code" />
-    </p>
-  </div>
-<% end %>
