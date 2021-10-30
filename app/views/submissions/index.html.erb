@@ -4,7 +4,7 @@
     class: 'btn btn-sm btn-outline-primary' %>
 <% end %>
 
-<table class="table">
+<table class="table table-sm table-stripped">
   <thead>
     <tr>
       <th>State</th>
@@ -44,7 +44,7 @@
                   viewbox: true
                 )
             %>
-          <div style="width: 90px"><%= svg.html_safe %></div>
+          <div style="width: 70px"><%= svg.html_safe %></div>
           <% end %>
         <td>
           <%= submission.team ? link_to(submission.team.name, submission.team) : link_to(submission.user.display_name, submission.user) %>
