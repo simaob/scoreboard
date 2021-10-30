@@ -5,6 +5,9 @@ class Submission < ApplicationRecord
 
   scope :most_loved, -> { order('votes_count DESC') }
 
+  validates :project_name, presence: true
+  validates :url, presence: true
+
   def pr_state
     return :invalid unless url.include?('github.com')
 
