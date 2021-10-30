@@ -4,6 +4,8 @@ class Team < ApplicationRecord
   has_many :votes
   has_many :votes_received, through: :submissions, source: :votes
 
+  validates :name, presence: true
+
   def submissions_count
     submissions.count
   end
