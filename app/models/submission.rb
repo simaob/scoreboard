@@ -11,7 +11,7 @@ class Submission < ApplicationRecord
     github = Octokit::Client.new(:access_token => ENV['GITHUB_PERSONAL_TOKEN'])
 
     parts = url.split("/")
-    org_repo = parts[3] + parts[4]
+    org_repo = "#{parts[3]}/#{parts[4]}"
     pull_number = parts.last
     pr = github.pull_request(org_repo, pull_number)
 
